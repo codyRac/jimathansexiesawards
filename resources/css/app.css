@@ -61,6 +61,15 @@
     --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* Jim Athans Xies Awards brand palette */
+@theme {
+    --color-xies-black: #070707;
+    --color-xies-charcoal: #151515;
+    --color-xies-gold: #c9a24a;
+    --color-xies-goldlight: #f0cf72;
+    --color-xies-cream: #f7edd6;
+}
+
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
@@ -168,5 +177,119 @@
     }
     body {
         @apply bg-background text-foreground;
+    }
+}
+
+/* Custom animations */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatPulse {
+    0%, 100% {
+        transform: translateY(0px);
+        filter: drop-shadow(0 0 60px rgba(201, 162, 74, 0.25));
+    }
+    50% {
+        transform: translateY(-10px);
+        filter: drop-shadow(0 0 80px rgba(201, 162, 74, 0.35));
+    }
+}
+
+@keyframes spinSlow {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(201, 162, 74, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(201, 162, 74, 0.6);
+    }
+}
+
+@keyframes shimmer {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@layer utilities {
+    .animate-slide-in-left {
+        animation: slideInLeft 0.8s ease-out forwards;
+    }
+    .animate-slide-in-right {
+        animation: slideInRight 0.8s ease-out forwards;
+    }
+    .animate-slide-in-up {
+        animation: slideInUp 0.8s ease-out forwards;
+    }
+    .animate-float-pulse {
+        animation: floatPulse 4s ease-in-out infinite;
+    }
+    .animate-spin-slow {
+        animation: spinSlow 20s linear infinite;
+    }
+    .animate-glow {
+        animation: glow 2s ease-in-out infinite;
+    }
+    .animate-shimmer {
+        animation: shimmer 2s ease-in-out infinite;
+    }
+
+    /* Scroll-triggered animations */
+    [data-scroll-animate] {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    [data-scroll-animate].animate-in {
+        animation: slideInUp 0.8s ease-out forwards;
+    }
+
+    [data-scroll-animate*="left"].animate-in {
+        animation: slideInLeft 0.8s ease-out forwards;
+    }
+
+    [data-scroll-animate*="right"].animate-in {
+        animation: slideInRight 0.8s ease-out forwards;
     }
 }
