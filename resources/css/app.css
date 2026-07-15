@@ -252,6 +252,17 @@
     }
 }
 
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
+
 @layer utilities {
     .animate-slide-in-left {
         animation: slideInLeft 0.8s ease-out forwards;
@@ -268,11 +279,49 @@
     .animate-spin-slow {
         animation: spinSlow 20s linear infinite;
     }
+    .animate-spin-slow-reverse {
+        animation: spinSlow 26s linear infinite reverse;
+    }
     .animate-glow {
         animation: glow 2s ease-in-out infinite;
     }
     .animate-shimmer {
         animation: shimmer 2s ease-in-out infinite;
+    }
+    .animate-twinkle {
+        animation: twinkle 2.4s ease-in-out infinite;
+    }
+
+    /* Gold 3D embossed lettering (pairs with a gradient bg-clip-text fill) */
+    .xies-emboss {
+        text-shadow:
+            1px 1px 0 #8a6b2b,
+            2px 2px 0 #6b501f,
+            3px 3px 0 #4a3814,
+            4px 5px 10px rgba(0, 0, 0, 0.55),
+            0 0 40px rgba(240, 207, 114, 0.5);
+    }
+
+    /* Scattered star field for the hero backdrop */
+    .xies-starfield {
+        background-image:
+            radial-gradient(1.5px 1.5px at 6% 18%, #fff, transparent 60%),
+            radial-gradient(1px 1px at 14% 44%, #fff, transparent 60%),
+            radial-gradient(1.5px 1.5px at 22% 8%, #f0cf72, transparent 60%),
+            radial-gradient(1px 1px at 31% 72%, #fff, transparent 60%),
+            radial-gradient(1px 1px at 38% 30%, #fff, transparent 60%),
+            radial-gradient(1.5px 1.5px at 46% 88%, #f0cf72, transparent 60%),
+            radial-gradient(1px 1px at 54% 12%, #fff, transparent 60%),
+            radial-gradient(1.5px 1.5px at 61% 55%, #fff, transparent 60%),
+            radial-gradient(1px 1px at 68% 25%, #f0cf72, transparent 60%),
+            radial-gradient(1px 1px at 74% 80%, #fff, transparent 60%),
+            radial-gradient(1.5px 1.5px at 82% 40%, #fff, transparent 60%),
+            radial-gradient(1px 1px at 89% 65%, #f0cf72, transparent 60%),
+            radial-gradient(1px 1px at 95% 15%, #fff, transparent 60%),
+            radial-gradient(1.5px 1.5px at 9% 92%, #fff, transparent 60%),
+            radial-gradient(1px 1px at 44% 50%, #fff, transparent 60%),
+            radial-gradient(1px 1px at 78% 92%, #f0cf72, transparent 60%);
+        background-repeat: no-repeat;
     }
 
     /* Scroll-triggered animations */

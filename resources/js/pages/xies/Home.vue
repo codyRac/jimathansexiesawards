@@ -4,9 +4,15 @@ import {
     CalendarCheck,
     CircleCheck,
     Phone,
+    Podcast,
+    Radio,
+    Sparkles,
     Trophy,
+    Tv,
+    Users,
 } from '@lucide/vue';
 import { onMounted } from 'vue';
+import XiesHeroEmblem from '@/components/xies/XiesHeroEmblem.vue';
 
 defineProps<{
     fee: number;
@@ -19,6 +25,14 @@ defineProps<{
     };
     categories: string[];
 }>();
+
+const platformPillars = [
+    { icon: Podcast, label: 'Podcasts' },
+    { icon: Radio, label: 'Spaces' },
+    { icon: Tv, label: 'Live Shows' },
+    { icon: Users, label: 'Communities' },
+    { icon: Sparkles, label: 'Impact' },
+];
 
 const entrantTypes = [
     'Podcasts',
@@ -83,12 +97,15 @@ onMounted(() => {
 <template>
     <Head title="The X Impact Awards" />
 
-    <!-- Hero - Glamorous Centered Trophy -->
+    <!-- Hero - Glamorous Centered Emblem -->
     <section class="relative overflow-hidden bg-black pt-12 pb-20">
-        <!-- Background sparkles and stars -->
+        <!-- Background atmosphere: glow, star field, and light trails -->
         <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,162,74,0.08),transparent_60%)]" />
+        <div class="xies-starfield pointer-events-none absolute inset-0 opacity-80" />
+        <div class="pointer-events-none absolute top-[8%] left-0 h-px w-1/3 rotate-[-8deg] bg-gradient-to-r from-transparent via-xies-gold/40 to-transparent" />
+        <div class="pointer-events-none absolute right-0 bottom-[12%] h-px w-1/4 rotate-[10deg] bg-gradient-to-r from-transparent via-xies-goldlight/30 to-transparent" />
 
-        <div class="mx-auto max-w-4xl px-6">
+        <div class="relative mx-auto max-w-6xl px-6">
             <!-- Top tagline -->
             <p
                 class="text-center text-sm font-bold tracking-[0.3em] text-xies-gold uppercase animate-slide-in-up"
@@ -97,87 +114,98 @@ onMounted(() => {
                 The Premier Awards Show on the X Platform
             </p>
 
-            <!-- JIM ATHANS -->
-            <p
-                class="text-center mt-6 text-xl font-black tracking-widest text-xies-gold uppercase animate-slide-in-up"
-                style="animation-delay: 0.2s"
-            >
-                JIM ATHANS
-            </p>
-
-            <!-- Trophy - CENTERED HERO -->
+            <!-- Platform pillars strip -->
             <div
-                class="relative mx-auto mt-8 mb-8 w-full max-w-xs animate-slide-in-up"
-                style="animation-delay: 0.3s"
+                class="mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 animate-slide-in-up"
+                style="animation-delay: 0.15s"
             >
-                <img
-                    src="/images/xies-full-logo.png"
-                    alt="The Jim Athans Xies Awards golden microphone trophy"
-                    class="w-full animate-float-pulse drop-shadow-[0_0_120px_rgba(201,162,74,0.4)]"
-                />
+                <span
+                    v-for="pillar in platformPillars"
+                    :key="pillar.label"
+                    class="flex items-center gap-1.5 text-xs font-bold tracking-widest text-white/50 uppercase"
+                >
+                    <component :is="pillar.icon" class="size-3.5 text-xies-gold" />
+                    {{ pillar.label }}
+                </span>
             </div>
 
-            <!-- XIES (large centered) -->
-            <h1
-                class="text-center text-7xl sm:text-8xl font-black tracking-tight italic text-transparent bg-gradient-to-b from-xies-goldlight via-xies-gold to-xies-gold bg-clip-text animate-slide-in-up"
-                style="animation-delay: 0.4s; line-height: 0.9"
-            >
-                XIES
-            </h1>
-
-            <!-- X IMPACT AWARDS -->
-            <p
-                class="text-center mt-2 text-sm font-bold tracking-widest text-xies-goldlight uppercase animate-slide-in-up"
-                style="animation-delay: 0.5s"
-            >
-                X Impact Awards
-            </p>
-            <p
-                class="text-center text-xs tracking-[0.2em] text-white/40 uppercase animate-slide-in-up"
-                style="animation-delay: 0.6s"
-            >
-                Excellence in X Broadcasting
-            </p>
-
-            <!-- Info boxes row -->
-            <div
-                class="grid gap-6 mt-10 md:grid-cols-2 lg:gap-10 animate-slide-in-up"
-                style="animation-delay: 0.7s"
-            >
-                <!-- Left box: What are the Xies -->
-                <div class="rounded-2xl border border-xies-gold/60 bg-xies-cream p-6 text-xies-black text-center md:text-left">
-                    <h3 class="font-bold text-sm tracking-widest uppercase text-[#8A6B2B]">What Are the Xies?</h3>
-                    <p class="mt-2 text-sm leading-relaxed">
-                        The first and only comprehensive awards program honoring excellence across all content, creators, and communities on the X platform.
+            <!-- Emblem + flanking callouts -->
+            <div class="xies-hero-grid mt-10">
+                <div
+                    class="xies-hero-box-a rounded-2xl border border-xies-gold/40 bg-xies-charcoal p-5 text-center animate-slide-in-left sm:text-left"
+                    style="animation-delay: 0.3s"
+                >
+                    <h3 class="text-xs font-black tracking-[0.2em] text-xies-goldlight uppercase">Honoring</h3>
+                    <p class="mt-1.5 text-xs leading-relaxed text-white/70">
+                        Creators, broadcasters &amp; communities making an impact on X.
                     </p>
-                    <p class="mt-3 text-xs font-bold tracking-widest text-[#8A6B2B] uppercase">We recognize:</p>
-                    <ul class="mt-2 text-xs space-y-1">
-                        <li>✓ News & Journalism</li>
-                        <li>✓ Comedy & Entertainment</li>
-                        <li>✓ Sports & Gaming</li>
-                        <li>✓ And 14+ more categories</li>
-                    </ul>
+                </div>
+                <div
+                    class="xies-hero-box-b rounded-2xl border border-xies-gold/60 bg-xies-cream p-5 text-center text-xies-black animate-slide-in-left sm:text-left"
+                    style="animation-delay: 0.45s"
+                >
+                    <h3 class="text-xs font-black tracking-[0.2em] text-[#8A6B2B] uppercase">What Are the Xies?</h3>
+                    <p class="mt-1.5 text-xs leading-relaxed">
+                        The first awards program built entirely for X — every voice, every format, every impact.
+                    </p>
                 </div>
 
-                <!-- Right box: Who can enter -->
-                <div class="rounded-2xl border border-xies-gold/60 bg-xies-charcoal p-6 text-center md:text-left">
-                    <h3 class="font-bold text-sm tracking-widest uppercase text-xies-goldlight">Who Can Enter?</h3>
-                    <ul class="mt-3 space-y-2 text-sm text-white/80">
-                        <li class="flex items-start gap-2">
-                            <span class="text-xies-gold mt-1">✓</span>
-                            <span>Anyone who creates or hosts on X Spaces, X Live, or any broadcast format</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-xies-gold mt-1">✓</span>
-                            <span>Self-nominate or be nominated by your community</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-xies-gold mt-1">✓</span>
-                            <span>All countries, languages, and topics</span>
-                        </li>
-                    </ul>
-                    <p class="mt-4 text-lg font-black text-xies-goldlight italic">
-                        If you broadcast on X,<br />you belong here!
+                <div class="xies-hero-center">
+                    <p
+                        class="text-center text-lg font-black tracking-[0.35em] text-xies-gold uppercase animate-slide-in-up"
+                        style="animation-delay: 0.2s"
+                    >
+                        Jim Athans
+                    </p>
+
+                    <div class="mt-4 animate-slide-in-up" style="animation-delay: 0.3s">
+                        <XiesHeroEmblem />
+                    </div>
+
+                    <h1
+                        class="-mt-4 text-center text-7xl sm:text-8xl font-black tracking-tight italic text-transparent bg-gradient-to-b from-xies-goldlight via-xies-goldlight to-xies-gold bg-clip-text xies-emboss animate-slide-in-up"
+                        style="animation-delay: 0.5s; line-height: 0.9"
+                    >
+                        XIES
+                    </h1>
+                    <p
+                        class="text-center mt-2 text-2xl font-black tracking-[0.3em] text-xies-goldlight uppercase animate-slide-in-up"
+                        style="animation-delay: 0.6s"
+                    >
+                        Awards
+                    </p>
+                    <p
+                        class="text-center mt-1 text-xs tracking-[0.2em] text-white/40 uppercase animate-slide-in-up"
+                        style="animation-delay: 0.7s"
+                    >
+                        X Impact Awards &middot; Excellence in X Broadcasting
+                    </p>
+                </div>
+
+                <div
+                    class="xies-hero-box-c rounded-2xl border border-xies-gold/60 bg-xies-charcoal p-5 text-center animate-slide-in-right sm:text-left"
+                    style="animation-delay: 0.45s"
+                >
+                    <div class="flex items-center justify-center gap-1.5 sm:justify-start">
+                        <span class="relative flex size-1.5">
+                            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-xies-gold opacity-75" />
+                            <span class="relative inline-flex size-1.5 rounded-full bg-xies-goldlight" />
+                        </span>
+                        <h3 class="text-xs font-black tracking-[0.2em] text-xies-goldlight uppercase">
+                            Live on X — {{ dates.show }}
+                        </h3>
+                    </div>
+                    <p class="mt-1.5 text-xs leading-relaxed text-white/70">
+                        Celebrating excellence. Elevating every voice.
+                    </p>
+                </div>
+                <div
+                    class="xies-hero-box-d rounded-2xl border border-xies-gold/40 bg-xies-charcoal p-5 text-center animate-slide-in-right sm:text-left"
+                    style="animation-delay: 0.6s"
+                >
+                    <h3 class="text-xs font-black tracking-[0.2em] text-xies-goldlight uppercase">Who Can Enter?</h3>
+                    <p class="mt-1.5 text-xs leading-relaxed text-white/70">
+                        If you broadcast on X — podcasts, Spaces, live shows — you belong here.
                     </p>
                 </div>
             </div>
@@ -486,3 +514,45 @@ onMounted(() => {
         </p>
     </section>
 </template>
+
+<style scoped>
+/* Hero grid: emblem centered, callout boxes stack below on mobile and
+   flank left/right on desktop without reordering the DOM. */
+.xies-hero-grid {
+    display: grid;
+    grid-template-areas:
+        'center'
+        'a'
+        'b'
+        'c'
+        'd';
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.xies-hero-box-a {
+    grid-area: a;
+}
+.xies-hero-box-b {
+    grid-area: b;
+}
+.xies-hero-box-c {
+    grid-area: c;
+}
+.xies-hero-box-d {
+    grid-area: d;
+}
+.xies-hero-center {
+    grid-area: center;
+}
+
+@media (min-width: 1024px) {
+    .xies-hero-grid {
+        grid-template-areas: 'a center c' 'b center d';
+        grid-template-columns: 220px 1fr 220px;
+        grid-template-rows: auto auto;
+        gap: 1.5rem 2.5rem;
+    }
+}
+</style>
