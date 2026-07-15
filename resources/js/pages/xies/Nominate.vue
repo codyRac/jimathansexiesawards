@@ -94,7 +94,7 @@ const labelClass =
 </script>
 
 <template>
-    <Head title="Nominate" />
+    <Head title="Submit Your Nomination" />
 
     <section class="relative overflow-hidden">
         <div

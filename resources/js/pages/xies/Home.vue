@@ -95,7 +95,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <Head title="The X Impact Awards" />
+    <Head title="Nothing Is as Sexy as an XIE" />
 
     <!-- Hero - Glamorous Centered Emblem -->
     <section class="relative overflow-hidden bg-black pt-12 pb-20">
