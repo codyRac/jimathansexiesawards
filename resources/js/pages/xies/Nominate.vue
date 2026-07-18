@@ -343,7 +343,7 @@ const labelClass =
             </div>
 
             <h3
-                class="mt-8 text-xs font-black tracking-[0.2em] text-white/60 uppercase"
+                class="mt-8 text-xl text-bold font-black tracking-[0.2em] text-white uppercase"
             >
                 Additional Categories
             </h3>
@@ -538,7 +538,7 @@ const labelClass =
                     v-else
                     class="flex items-center justify-center gap-2 rounded-md border border-white/15 px-5 py-3 text-sm font-bold tracking-wide text-white/40 uppercase"
                 >
-                    PayPal link coming soon
+                    PayPal link
                 </div>
                 <a
                     v-if="stripeUrl"
@@ -548,14 +548,14 @@ const labelClass =
                     class="flex items-center justify-center gap-2 rounded-md border border-xies-gold px-5 py-3 text-sm font-black tracking-wide text-xies-goldlight uppercase transition hover:bg-xies-gold/10"
                 >
                     <CreditCard class="size-4" />
-                    Pay by Card
+                    Stripe Link
                 </a>
                 <div
                     v-else
                     class="flex items-center justify-center gap-2 rounded-md border border-white/15 px-5 py-3 text-sm font-bold tracking-wide text-white/40 uppercase"
                 >
                     <CreditCard class="size-4" />
-                    Card payments coming soon
+                    Stripe Link
                 </div>
             </div>
 
@@ -564,8 +564,7 @@ const labelClass =
                 class="mt-3 flex items-center gap-2 text-xs text-white/50"
             >
                 <Phone class="size-3.5 text-xies-gold" />
-                Online payment links are being configured — call
-                {{ phones.join(' or ') }} to pay by phone.
+                Call {{ phones.join(' or ') }} to pay by phone.
             </p>
 
             <div class="mt-6 grid gap-5 sm:grid-cols-2">
@@ -592,7 +591,7 @@ const labelClass =
                                 value="card"
                                 class="size-4 accent-xies-gold"
                             />
-                            Card
+                            Stripe
                         </label>
                     </div>
                     <InputError
@@ -634,8 +633,7 @@ const labelClass =
                     class="mt-0.5 size-4 shrink-0 accent-xies-gold"
                 />
                 <span>
-                    I confirm this entry is my own submission, that I have
-                    permission to share the included content, and I agree to the
+                    I agree to the
                     Xies nomination rules, eligibility period ({{
                         dates.eligibility_start
                     }}

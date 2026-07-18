@@ -59,7 +59,7 @@ const callTopics = [
             class="mx-auto w-full max-w-md rounded-2xl border border-xies-gold/40 shadow-[0_0_60px_rgba(201,162,74,0.25)]"
         />
 
-        <p
+         <!-- <p
             class="mx-auto mt-8 max-w-2xl rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-center text-sm text-white/60"
         >
             <span class="font-bold text-xies-goldlight uppercase"
@@ -67,7 +67,7 @@ const callTopics = [
             >
             The microphone trophies shown are concept designs. A manufacturer
             has not yet been selected.
-        </p>
+        </p> -->
 
         <div
             class="mx-auto mt-6 max-w-2xl rounded-2xl border-2 border-xies-gold bg-xies-charcoal p-8 text-center"
@@ -94,11 +94,11 @@ const callTopics = [
                     {{ topic }}
                 </li>
             </ul>
-            <p class="mx-auto mt-6 max-w-lg text-sm text-white/50">
+            <!-- <p class="mx-auto mt-6 max-w-lg text-sm text-white/50">
                 PayPal and Stripe checkout will be connected once manufacturing
                 and payment processing are finalized. Until then, all trophy
                 inquiries and orders are handled by phone.
-            </p>
+            </p> -->
         </div>
 
         <p class="mt-10 text-center text-sm text-white/50">

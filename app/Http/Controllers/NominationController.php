@@ -17,6 +17,70 @@ use Inertia\Response;
 class NominationController extends Controller
 {
     /**
+     * Show the public list of nomination records.
+     */
+    public function index(Request $request): Response
+    {
+        $search = trim((string) $request->query('search', ''));
+        $category = (string) $request->query('category', '');
+
+        if (! in_array($category, Xies::allCategories(), true)) {
+            $category = '';
+        }
+
+        $nominations = Nomination::query()
+            ->when($search !== '', fn ($query) => $query->where(function ($query) use ($search) {
+                $query->where('nominee_name', 'like', "%{$search}%")
+                    ->orWhere('nominee_x_handle', 'like', "%{$search}%")
+                    ->orWhere('show_name', 'like', "%{$search}%");
+            }))
+            ->when($category !== '', fn ($query) => $query->whereJsonContains('categories', $category))
+            ->latest()
+            ->paginate(24)
+            ->withQueryString()
+            ->through(fn (Nomination $nomination) => [
+                'number' => $nomination->nomination_number,
+                'nominee_name' => $nomination->nominee_name,
+                'nominee_x_handle' => $nomination->nominee_x_handle,
+                'show_name' => $nomination->show_name,
+                'categories' => $nomination->categories,
+                'status' => $nomination->status,
+                'submitted_at' => $nomination->created_at?->format('M j, Y'),
+            ]);
+
+        return Inertia::render('xies/Nominations', [
+            ...Xies::siteProps(),
+            'nominations' => $nominations,
+            'allCategories' => Xies::allCategories(),
+            'filters' => [
+                'search' => $search,
+                'category' => $category,
+            ],
+        ]);
+    }
+
+    /**
+     * Show a single public nomination record.
+     */
+    public function show(Nomination $nomination): Response
+    {
+        return Inertia::render('xies/NominationRecord', [
+            ...Xies::siteProps(),
+            'nomination' => [
+                'number' => $nomination->nomination_number,
+                'nominee_name' => $nomination->nominee_name,
+                'nominee_x_handle' => $nomination->nominee_x_handle,
+                'show_name' => $nomination->show_name,
+                'categories' => $nomination->categories,
+                'reason' => $nomination->reason,
+                'links' => $nomination->links,
+                'status' => $nomination->status,
+                'submitted_at' => $nomination->created_at?->format('F j, Y'),
+            ],
+        ]);
+    }
+
+    /**
      * Show the nomination form.
      */
     public function create(): Response

@@ -13,6 +13,9 @@ Route::get('nominate', [NominationController::class, 'create'])->name('nominate'
 Route::post('nominate', [NominationController::class, 'store'])->name('nominate.store');
 Route::get('nominate/thank-you', [NominationController::class, 'confirmation'])->name('nominate.confirmation');
 
+Route::get('nominations', [NominationController::class, 'index'])->name('nominations.index');
+Route::get('nominations/{nomination:nomination_number}', [NominationController::class, 'show'])->name('nominations.show');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::patch('dashboard/nominations/{nomination}/status', [DashboardController::class, 'updateStatus'])->name('dashboard.nominations.status');

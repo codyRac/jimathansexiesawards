@@ -89,10 +89,10 @@ const printfulPoints = [
             <h2 class="text-xl font-black tracking-wide uppercase">
                 Ready to order?
             </h2>
-            <p class="mx-auto mt-2 max-w-lg text-sm text-white/60">
+            <!-- <p class="mx-auto mt-2 max-w-lg text-sm text-white/60">
                 PayPal and Stripe checkout are being connected — until online
                 ordering goes live, call us to place your order.
-            </p>
+            </p> -->
             <div
                 class="mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-2"
             >

@@ -59,6 +59,16 @@ defineProps<{
             </p>
         </div>
 
+        <p class="mt-5 text-sm text-white/60">
+            Your nomination now has its own public page —
+            <Link
+                :href="`/nominations/${nomination.number}`"
+                class="font-bold text-xies-goldlight underline underline-offset-4"
+                >view your nomination record</Link
+            >
+            and share it to rally your community.
+        </p>
+
         <div
             class="mt-10 rounded-2xl border border-white/10 bg-xies-charcoal p-6 text-left"
         >

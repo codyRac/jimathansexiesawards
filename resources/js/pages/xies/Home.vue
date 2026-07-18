@@ -234,8 +234,7 @@ onMounted(() => {
                         Who Can Enter?
                     </h3>
                     <p class="mt-1.5 text-xs leading-relaxed text-white/70">
-                        If you broadcast on X — podcasts, Spaces, live shows —
-                        you belong here.
+                        Anyone and everything one contributes to the X platform
                     </p>
                 </div>
             </div>
@@ -384,7 +383,7 @@ onMounted(() => {
                 <p
                     class="mt-6 text-3xl leading-tight font-black tracking-tight text-xies-goldlight uppercase italic"
                 >
-                    If you broadcast on X, you belong here!
+                    If you've been on X, you belong here!
                 </p>
                 <p class="mt-4 text-sm tracking-widest text-white/50 uppercase">
                     Be seen. Be heard. Be celebrated.

@@ -18,6 +18,7 @@ const mobileOpen = ref(false);
 const nav = [
     { title: 'Home', href: '/' },
     { title: 'Nominate', href: '/nominate' },
+    { title: 'Nominations', href: '/nominations' },
     { title: 'Merchandise', href: '/shop' },
     { title: 'Trophy Collection', href: '/trophies' },
 ];
@@ -27,7 +28,8 @@ const currentPath = computed(() => page.url.split('?')[0]);
 const isCurrent = (href: string) =>
     href === '/'
         ? currentPath.value === '/'
-        : currentPath.value.startsWith(href);
+        : currentPath.value === href ||
+          currentPath.value.startsWith(`${href}/`);
 
 const phones = ['877-243-9279', '816-907-8628'];
 
