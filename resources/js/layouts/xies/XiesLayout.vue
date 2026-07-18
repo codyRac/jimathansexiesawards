@@ -18,7 +18,8 @@ const mobileOpen = ref(false);
 const nav = [
     { title: 'Home', href: '/' },
     { title: 'Nominate', href: '/nominate' },
-    { title: 'Shop', href: '/shop' },
+    { title: 'Merchandise', href: '/shop' },
+    { title: 'Trophy Collection', href: '/trophies' },
 ];
 
 const currentPath = computed(() => page.url.split('?')[0]);

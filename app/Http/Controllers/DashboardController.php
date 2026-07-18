@@ -33,6 +33,7 @@ class DashboardController extends Controller
                 'attachments_count' => count($nomination->attachments ?? []),
                 'nominator_name' => $nomination->nominator_name,
                 'nominator_email' => $nomination->nominator_email,
+                'nominator_phone' => $nomination->nominator_phone,
                 'submitted_at' => $nomination->created_at?->format('M j, Y g:ia'),
             ])->values()->all(),
             'stats' => [

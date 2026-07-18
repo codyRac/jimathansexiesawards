@@ -14,6 +14,8 @@ defineProps<{
     phones: string[];
     website: string;
     dates: {
+        eligibility_start: string;
+        eligibility_end: string;
         nominations_open: string;
         nominations_close: string;
         show: string;

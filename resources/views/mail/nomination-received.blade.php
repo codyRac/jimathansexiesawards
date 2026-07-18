@@ -26,7 +26,7 @@ Thank you for nominating **{{ $nomination->nominee_name }}** for the Jim Athans 
 @endif
 
 @if ($forAdmin)
-Submitted by {{ $nomination->nominator_name }} ({{ $nomination->nominator_email }}). Review it on the dashboard and mark it verified once payment is confirmed.
+Submitted by {{ $nomination->nominator_name }} ({{ $nomination->nominator_email }}@if ($nomination->nominator_phone), {{ $nomination->nominator_phone }}@endif). Review it on the dashboard and mark it verified once payment is confirmed.
 @else
 Your entry becomes official once your ${{ $nomination->amount_due }} nomination fee is verified. Keep your nomination number for your records — you'll need it for any questions about your entry.
 

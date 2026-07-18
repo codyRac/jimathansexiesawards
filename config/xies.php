@@ -49,6 +49,8 @@ return [
     'website' => 'www.jimathansxiesawards.com',
 
     'dates' => [
+        'eligibility_start' => 'January 1, 2026',
+        'eligibility_end' => 'December 31, 2026',
         'nominations_open' => 'June 3, 2026',
         'nominations_close' => 'December 31, 2026',
         'show' => 'December 31, 2026',
@@ -79,6 +81,89 @@ return [
         'Debates & Discussions',
         'Newcomers & Rising Stars',
         'Personalities & Influencers',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Additional Category Groups
+    |--------------------------------------------------------------------------
+    |
+    | The complete list of additional categories shown on the nomination
+    | page, organized into groups. The featured categories above stay on
+    | the home page; these appear only on the nomination page.
+    |
+    */
+
+    'category_groups' => [
+        'Podcast, Show & Program Categories' => [
+            'Best Independent Podcast',
+            'Best Conservative Podcast',
+            'Best Liberal Podcast',
+            'Best Nonpartisan Political Podcast',
+            'Best Political X Space',
+            'Best Current Events Program',
+            'Best News Commentary Program',
+            'Best Breaking News Coverage',
+            'Best Investigative Journalism',
+            'Best Documentary-Style Program',
+            'Best Educational Series',
+            'Best Business and Finance Podcast',
+            'Best Technology Podcast',
+            'Best Health and Wellness Podcast',
+            'Best Sports Podcast',
+            'Best Music Podcast',
+            'Best Arts and Culture Podcast',
+            'Best Entertainment Podcast',
+            'Best Faith and Spirituality Podcast',
+            'Best International Podcast',
+            'Best International X Show',
+            'Best International X Space',
+            'Best Community Service Program',
+            'Best Advocacy Program',
+            'Best Live Broadcast',
+            'Best Panel Show',
+            'Best Debate',
+            'Best Special Episode',
+            'Best Original Program Format',
+        ],
+        'Host, Guest & Personality Categories' => [
+            'Best Solo Host',
+            'Best Hosting Team',
+            'Best Moderator',
+            'Best Guest Appearance',
+            'Best Celebrity Personality',
+            'Best Comedy Personality',
+            'Best Political Personality',
+            'Best Inspirational Voice',
+            'Best Rising Voice',
+            'Best Newcomer',
+            'Best Youth Voice',
+            'Best Senior Voice',
+            'Best International Host',
+            'Best Community Builder',
+            'Best Audience Interaction',
+        ],
+        'Production & Behind-the-Scenes Categories' => [
+            'Best Producer',
+            'Best Executive Producer',
+            'Best Audio Production',
+            'Best Video Production',
+            'Best Researcher or Research Team',
+            'Best Guest Booker',
+            'Best Behind-the-Scenes Contributor',
+            'Best Promotional Campaign',
+            'Best Show Branding',
+            'Best Show Introduction',
+            'Best Use of Social Media',
+            'Best Audience Engagement',
+        ],
+        'Special Recognition Categories' => [
+            "People's Choice Award",
+            'Lifetime Achievement Award',
+            'XIES Excellence Award',
+            'XIES Humanitarian Award',
+            'XIES Impact Award',
+        ],
     ],
 
 ];

@@ -12,13 +12,14 @@ import {
     Users,
 } from '@lucide/vue';
 import { onMounted } from 'vue';
-import XiesHeroEmblem from '@/components/xies/XiesHeroEmblem.vue';
 
 defineProps<{
     fee: number;
     phones: string[];
     website: string;
     dates: {
+        eligibility_start: string;
+        eligibility_end: string;
         nominations_open: string;
         nominations_close: string;
         show: string;
@@ -84,7 +85,7 @@ onMounted(() => {
                 }
             });
         },
-        { threshold: 0.1 }
+        { threshold: 0.1 },
     );
 
     // Observe all sections with scroll-animate class
@@ -100,15 +101,23 @@ onMounted(() => {
     <!-- Hero - Glamorous Centered Emblem -->
     <section class="relative overflow-hidden bg-black pt-12 pb-20">
         <!-- Background atmosphere: glow, star field, and light trails -->
-        <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,162,74,0.08),transparent_60%)]" />
-        <div class="xies-starfield pointer-events-none absolute inset-0 opacity-80" />
-        <div class="pointer-events-none absolute top-[8%] left-0 h-px w-1/3 rotate-[-8deg] bg-gradient-to-r from-transparent via-xies-gold/40 to-transparent" />
-        <div class="pointer-events-none absolute right-0 bottom-[12%] h-px w-1/4 rotate-[10deg] bg-gradient-to-r from-transparent via-xies-goldlight/30 to-transparent" />
+        <div
+            class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,162,74,0.08),transparent_60%)]"
+        />
+        <div
+            class="xies-starfield pointer-events-none absolute inset-0 opacity-80"
+        />
+        <div
+            class="pointer-events-none absolute top-[8%] left-0 h-px w-1/3 rotate-[-8deg] bg-gradient-to-r from-transparent via-xies-gold/40 to-transparent"
+        />
+        <div
+            class="pointer-events-none absolute right-0 bottom-[12%] h-px w-1/4 rotate-[10deg] bg-gradient-to-r from-transparent via-xies-goldlight/30 to-transparent"
+        />
 
         <div class="relative mx-auto max-w-6xl px-6">
             <!-- Top tagline -->
             <p
-                class="text-center text-sm font-bold tracking-[0.3em] text-xies-gold uppercase animate-slide-in-up"
+                class="animate-slide-in-up text-center text-sm font-bold tracking-[0.3em] text-xies-gold uppercase"
                 style="animation-delay: 0.1s"
             >
                 The Premier Awards Show on the X Platform
@@ -116,7 +125,7 @@ onMounted(() => {
 
             <!-- Platform pillars strip -->
             <div
-                class="mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 animate-slide-in-up"
+                class="animate-slide-in-up mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-2"
                 style="animation-delay: 0.15s"
             >
                 <span
@@ -124,7 +133,10 @@ onMounted(() => {
                     :key="pillar.label"
                     class="flex items-center gap-1.5 text-xs font-bold tracking-widest text-white/50 uppercase"
                 >
-                    <component :is="pillar.icon" class="size-3.5 text-xies-gold" />
+                    <component
+                        :is="pillar.icon"
+                        class="size-3.5 text-xies-gold"
+                    />
                     {{ pillar.label }}
                 </span>
             </div>
@@ -132,66 +144,79 @@ onMounted(() => {
             <!-- Emblem + flanking callouts -->
             <div class="xies-hero-grid mt-10">
                 <div
-                    class="xies-hero-box-a rounded-2xl border border-xies-gold/40 bg-xies-charcoal p-5 text-center animate-slide-in-left sm:text-left"
+                    class="xies-hero-box-a animate-slide-in-left rounded-2xl border border-xies-gold/40 bg-xies-charcoal p-5 text-center sm:text-left"
                     style="animation-delay: 0.3s"
                 >
-                    <h3 class="text-xs font-black tracking-[0.2em] text-xies-goldlight uppercase">Honoring</h3>
+                    <h3
+                        class="text-xs font-black tracking-[0.2em] text-xies-goldlight uppercase"
+                    >
+                        Honoring
+                    </h3>
                     <p class="mt-1.5 text-xs leading-relaxed text-white/70">
-                        Creators, broadcasters &amp; communities making an impact on X.
+                        Creators, broadcasters &amp; communities making an
+                        impact on X.
                     </p>
                 </div>
                 <div
-                    class="xies-hero-box-b rounded-2xl border border-xies-gold/60 bg-xies-cream p-5 text-center text-xies-black animate-slide-in-left sm:text-left"
+                    class="xies-hero-box-b animate-slide-in-left rounded-2xl border border-xies-gold/60 bg-xies-cream p-5 text-center text-xies-black sm:text-left"
                     style="animation-delay: 0.45s"
                 >
-                    <h3 class="text-xs font-black tracking-[0.2em] text-[#8A6B2B] uppercase">What Are the Xies?</h3>
+                    <h3
+                        class="text-xs font-black tracking-[0.2em] text-[#8A6B2B] uppercase"
+                    >
+                        What Are the Xies?
+                    </h3>
                     <p class="mt-1.5 text-xs leading-relaxed">
-                        The first awards program built entirely for X — every voice, every format, every impact.
+                        The first awards program built entirely for X — every
+                        voice, every format, every impact.
                     </p>
                 </div>
 
                 <div class="xies-hero-center">
-                    <p
-                        class="text-center text-lg font-black tracking-[0.35em] text-xies-gold uppercase animate-slide-in-up"
+                    <h1
+                        class="animate-slide-in-up text-center text-lg font-black tracking-[0.35em] text-xies-gold uppercase"
                         style="animation-delay: 0.2s"
                     >
-                        Jim Athans
-                    </p>
+                        Jim Athans Xies Awards
+                    </h1>
 
-                    <div class="mt-4 animate-slide-in-up" style="animation-delay: 0.3s">
-                        <XiesHeroEmblem />
+                    <div
+                        class="animate-slide-in-up mt-4 flex justify-center"
+                        style="animation-delay: 0.3s"
+                    >
+                        <img
+                            src="/images/xies-hero-artwork.jpg"
+                            alt="Nothing Is As Sexy As An XIE — five glamorous award recipients holding gold XIE Award microphone trophies"
+                            class="w-full max-w-[512px] rounded-2xl border border-xies-gold/50 shadow-[0_0_60px_rgba(201,162,74,0.35)]"
+                        />
                     </div>
 
-                    <h1
-                        class="-mt-4 text-center text-7xl sm:text-8xl font-black tracking-tight italic text-transparent bg-gradient-to-b from-xies-goldlight via-xies-goldlight to-xies-gold bg-clip-text xies-emboss animate-slide-in-up"
-                        style="animation-delay: 0.5s; line-height: 0.9"
-                    >
-                        XIES
-                    </h1>
                     <p
-                        class="text-center mt-2 text-2xl font-black tracking-[0.3em] text-xies-goldlight uppercase animate-slide-in-up"
-                        style="animation-delay: 0.6s"
-                    >
-                        Awards
-                    </p>
-                    <p
-                        class="text-center mt-1 text-xs tracking-[0.2em] text-white/40 uppercase animate-slide-in-up"
-                        style="animation-delay: 0.7s"
+                        class="animate-slide-in-up mt-4 text-center text-xs tracking-[0.2em] text-white/40 uppercase"
+                        style="animation-delay: 0.5s"
                     >
                         X Impact Awards &middot; Excellence in X Broadcasting
                     </p>
                 </div>
 
                 <div
-                    class="xies-hero-box-c rounded-2xl border border-xies-gold/60 bg-xies-charcoal p-5 text-center animate-slide-in-right sm:text-left"
+                    class="xies-hero-box-c animate-slide-in-right rounded-2xl border border-xies-gold/60 bg-xies-charcoal p-5 text-center sm:text-left"
                     style="animation-delay: 0.45s"
                 >
-                    <div class="flex items-center justify-center gap-1.5 sm:justify-start">
+                    <div
+                        class="flex items-center justify-center gap-1.5 sm:justify-start"
+                    >
                         <span class="relative flex size-1.5">
-                            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-xies-gold opacity-75" />
-                            <span class="relative inline-flex size-1.5 rounded-full bg-xies-goldlight" />
+                            <span
+                                class="absolute inline-flex h-full w-full animate-ping rounded-full bg-xies-gold opacity-75"
+                            />
+                            <span
+                                class="relative inline-flex size-1.5 rounded-full bg-xies-goldlight"
+                            />
                         </span>
-                        <h3 class="text-xs font-black tracking-[0.2em] text-xies-goldlight uppercase">
+                        <h3
+                            class="text-xs font-black tracking-[0.2em] text-xies-goldlight uppercase"
+                        >
                             Live on X — {{ dates.show }}
                         </h3>
                     </div>
@@ -200,49 +225,63 @@ onMounted(() => {
                     </p>
                 </div>
                 <div
-                    class="xies-hero-box-d rounded-2xl border border-xies-gold/40 bg-xies-charcoal p-5 text-center animate-slide-in-right sm:text-left"
+                    class="xies-hero-box-d animate-slide-in-right rounded-2xl border border-xies-gold/40 bg-xies-charcoal p-5 text-center sm:text-left"
                     style="animation-delay: 0.6s"
                 >
-                    <h3 class="text-xs font-black tracking-[0.2em] text-xies-goldlight uppercase">Who Can Enter?</h3>
+                    <h3
+                        class="text-xs font-black tracking-[0.2em] text-xies-goldlight uppercase"
+                    >
+                        Who Can Enter?
+                    </h3>
                     <p class="mt-1.5 text-xs leading-relaxed text-white/70">
-                        If you broadcast on X — podcasts, Spaces, live shows — you belong here.
+                        If you broadcast on X — podcasts, Spaces, live shows —
+                        you belong here.
                     </p>
                 </div>
             </div>
 
             <!-- CTA Buttons -->
-            <div class="flex flex-col gap-3 mt-10 sm:flex-row sm:gap-4 sm:justify-center animate-slide-in-up" style="animation-delay: 0.8s">
+            <div
+                class="animate-slide-in-up mt-10 flex flex-col gap-3 sm:flex-row sm:justify-center sm:gap-4"
+                style="animation-delay: 0.8s"
+            >
                 <Link
                     href="/nominate"
-                    class="rounded-md bg-gradient-to-b from-xies-goldlight to-xies-gold px-8 py-3.5 text-base font-black tracking-wide text-xies-black uppercase shadow-[0_0_40px_rgba(201,162,74,0.4)] transition hover:brightness-110 hover:shadow-[0_0_60px_rgba(201,162,74,0.6)]"
+                    class="rounded-md bg-gradient-to-b from-xies-goldlight to-xies-gold px-8 py-3.5 text-center text-base font-black tracking-wide text-xies-black uppercase shadow-[0_0_40px_rgba(201,162,74,0.4)] transition hover:shadow-[0_0_60px_rgba(201,162,74,0.6)] hover:brightness-110"
                 >
                     Nominate Now
                 </Link>
                 <Link
                     href="/shop"
-                    class="rounded-md border border-xies-gold/50 px-8 py-3.5 text-base font-bold tracking-wide text-xies-goldlight uppercase transition hover:bg-xies-gold/10 hover:border-xies-gold"
+                    class="rounded-md border border-xies-gold/50 px-8 py-3.5 text-center text-base font-bold tracking-wide text-xies-goldlight uppercase transition hover:border-xies-gold hover:bg-xies-gold/10"
                 >
-                    Visit Shop
+                    Merchandise
+                </Link>
+                <Link
+                    href="/trophies"
+                    class="rounded-md border border-xies-gold/50 px-8 py-3.5 text-center text-base font-bold tracking-wide text-xies-goldlight uppercase transition hover:border-xies-gold hover:bg-xies-gold/10"
+                >
+                    Trophy Collection
                 </Link>
             </div>
 
             <!-- Live badge -->
-            <div class="flex justify-center mt-8 animate-slide-in-up" style="animation-delay: 0.9s">
+            <div
+                class="animate-slide-in-up mt-8 flex justify-center"
+                style="animation-delay: 0.9s"
+            >
                 <p
-                    class="inline-flex items-center gap-2 rounded-full border border-xies-gold/40 px-4 py-1.5 text-xs font-semibold tracking-widest text-xies-goldlight uppercase animate-glow"
+                    class="animate-glow inline-flex items-center gap-2 rounded-full border border-xies-gold/40 px-4 py-1.5 text-xs font-semibold tracking-widest text-xies-goldlight uppercase"
                 >
                     <span class="relative flex size-2">
-                        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-xies-gold opacity-75" />
-                        <span class="relative inline-flex size-2 rounded-full bg-xies-goldlight" />
+                        <span
+                            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-xies-gold opacity-75"
+                        />
+                        <span
+                            class="relative inline-flex size-2 rounded-full bg-xies-goldlight"
+                        />
                     </span>
                     Live on X — {{ dates.show }}
-                </p>
-            </div>
-
-            <!-- "Nothing Is as Sexy as an XIE" Slogan -->
-            <div class="mt-14 text-center animate-slide-in-up" style="animation-delay: 1.0s">
-                <p class="text-4xl sm:text-5xl font-black tracking-tight italic text-transparent bg-gradient-to-r from-xies-goldlight via-xies-gold to-xies-goldlight bg-clip-text">
-                    Nothing Is as Sexy<br />as an <span class="text-6xl sm:text-7xl">XIE</span>
                 </p>
             </div>
         </div>
@@ -259,12 +298,16 @@ onMounted(() => {
             <p
                 class="mx-auto mt-4 max-w-2xl text-center text-lg leading-relaxed font-semibold"
             >
-                The first and only comprehensive awards program honoring excellence across all content, creators, and communities on the X platform.
+                The first and only comprehensive awards program honoring
+                excellence across all content, creators, and communities on the
+                X platform.
             </p>
             <p
                 class="mx-auto mt-3 max-w-2xl text-center leading-relaxed text-xies-black/70"
             >
-                We recognize creators, broadcasters, podcasters, X Spaces hosts, independent journalists, entertainers, educators, and communities building conversations around the world.
+                We recognize creators, broadcasters, podcasters, X Spaces hosts,
+                independent journalists, entertainers, educators, and
+                communities building conversations around the world.
             </p>
 
             <h3
@@ -288,6 +331,15 @@ onMounted(() => {
                     And So Much More!
                 </li>
             </ul>
+            <p class="mt-8 text-center font-semibold">
+                These are our featured categories — see the
+                <Link
+                    href="/nominate"
+                    class="font-black text-[#8A6B2B] underline underline-offset-4 transition hover:text-xies-black"
+                    >complete list of additional categories</Link
+                >
+                on the Nomination page.
+            </p>
         </div>
     </section>
 
@@ -345,18 +397,20 @@ onMounted(() => {
     <section class="mx-auto max-w-6xl px-6 pb-20" data-scroll-animate>
         <div class="grid gap-10 lg:grid-cols-3">
             <div class="lg:col-span-2">
-                <h2 class="text-3xl font-black tracking-tight uppercase animate-slide-in-left">
+                <h2
+                    class="animate-slide-in-left text-3xl font-black tracking-tight uppercase"
+                >
                     How to Enter
                 </h2>
                 <ol class="mt-8 space-y-6">
                     <li
                         v-for="(step, index) in steps"
                         :key="step.title"
-                        class="flex items-start gap-4 animate-slide-in-up"
+                        class="animate-slide-in-up flex items-start gap-4"
                         :style="{ animationDelay: `${0.1 * index}s` }"
                     >
                         <span
-                            class="flex size-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-b from-xies-goldlight to-xies-gold text-base font-black text-xies-black animate-glow"
+                            class="animate-glow flex size-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-b from-xies-goldlight to-xies-gold text-base font-black text-xies-black"
                         >
                             {{ index + 1 }}
                         </span>
@@ -375,7 +429,7 @@ onMounted(() => {
             </div>
 
             <div
-                class="flex flex-col justify-center rounded-3xl border-2 border-xies-gold bg-xies-charcoal p-8 text-center animate-slide-in-up animate-glow"
+                class="animate-slide-in-up animate-glow flex flex-col justify-center rounded-3xl border-2 border-xies-gold bg-xies-charcoal p-8 text-center"
             >
                 <h3
                     class="text-sm font-black tracking-[0.25em] text-white/70 uppercase"
@@ -383,7 +437,7 @@ onMounted(() => {
                     Nomination Fee
                 </h3>
                 <p
-                    class="mt-4 text-7xl font-black text-transparent animate-shimmer"
+                    class="animate-shimmer mt-4 text-7xl font-black text-transparent"
                     style="
                         background: linear-gradient(180deg, #f0cf72, #c9a24a);
                         -webkit-background-clip: text;
@@ -416,7 +470,7 @@ onMounted(() => {
         </h2>
         <div class="mt-8 grid gap-4 md:grid-cols-3">
             <div
-                class="rounded-2xl border border-white/10 bg-xies-charcoal p-6 animate-slide-in-up hover:border-xies-gold/50 transition-colors duration-300"
+                class="animate-slide-in-up rounded-2xl border border-white/10 bg-xies-charcoal p-6 transition-colors duration-300 hover:border-xies-gold/50"
                 :style="{ animationDelay: '0s' }"
             >
                 <CalendarCheck class="size-7 text-xies-gold" />
@@ -428,10 +482,12 @@ onMounted(() => {
                 </p>
             </div>
             <div
-                class="rounded-2xl border border-white/10 bg-xies-charcoal p-6 animate-slide-in-up hover:border-xies-gold/50 transition-colors duration-300"
+                class="animate-slide-in-up rounded-2xl border border-white/10 bg-xies-charcoal p-6 transition-colors duration-300 hover:border-xies-gold/50"
                 :style="{ animationDelay: '0.1s' }"
             >
-                <CalendarCheck class="size-7 text-xies-gold animate-spin-slow" />
+                <CalendarCheck
+                    class="animate-spin-slow size-7 text-xies-gold"
+                />
                 <p class="mt-4 text-lg font-black text-xies-goldlight">
                     {{ dates.nominations_close }}
                 </p>
@@ -440,10 +496,13 @@ onMounted(() => {
                 </p>
             </div>
             <div
-                class="rounded-2xl border border-xies-gold/50 bg-xies-charcoal p-6 animate-slide-in-up hover:border-xies-goldlight hover:shadow-[0_0_30px_rgba(240,207,114,0.3)] transition-all duration-300"
+                class="animate-slide-in-up rounded-2xl border border-xies-gold/50 bg-xies-charcoal p-6 transition-all duration-300 hover:border-xies-goldlight hover:shadow-[0_0_30px_rgba(240,207,114,0.3)]"
                 :style="{ animationDelay: '0.2s' }"
             >
-                <Trophy class="size-7 text-xies-gold animate-spin-slow" style="animation-delay: 0.5s" />
+                <Trophy
+                    class="animate-spin-slow size-7 text-xies-gold"
+                    style="animation-delay: 0.5s"
+                />
                 <p class="mt-4 text-lg font-black text-xies-goldlight">
                     {{ dates.show }}
                 </p>
@@ -458,15 +517,17 @@ onMounted(() => {
             <span class="font-bold text-xies-goldlight uppercase"
                 >Eligibility period:</span
             >
-            {{ dates.nominations_open }} – {{ dates.nominations_close }}.
-            Includes all shows, Spaces, and broadcasts during this time.
+            {{ dates.eligibility_start }} – {{ dates.eligibility_end }}. All
+            shows and eligible content produced during 2026 may be nominated —
+            including outstanding primary-season shows from before nominations
+            open.
         </p>
     </section>
 
     <!-- CTA banner -->
     <section class="mx-auto max-w-6xl px-6 pb-20" data-scroll-animate>
         <div
-            class="rounded-3xl bg-gradient-to-br from-xies-goldlight via-xies-gold to-[#a8853a] p-10 text-center text-xies-black sm:p-14 shadow-xl hover:shadow-2xl transition-shadow duration-300"
+            class="rounded-3xl bg-gradient-to-br from-xies-goldlight via-xies-gold to-[#a8853a] p-10 text-center text-xies-black shadow-xl transition-shadow duration-300 hover:shadow-2xl sm:p-14"
         >
             <h2
                 class="text-3xl font-black tracking-tight uppercase sm:text-4xl"

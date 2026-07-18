@@ -1,89 +1,29 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
-import {
-    BadgeCheck,
-    Coffee,
-    Download,
-    Mic,
-    Phone,
-    Shirt,
-    ShoppingBag,
-} from '@lucide/vue';
-import type { FunctionalComponent } from 'vue';
+import { Globe, Package, Phone, ShieldCheck } from '@lucide/vue';
 
 defineProps<{
     fee: number;
     phones: string[];
     website: string;
     dates: {
+        eligibility_start: string;
+        eligibility_end: string;
         nominations_open: string;
         nominations_close: string;
         show: string;
     };
 }>();
 
-interface Product {
-    icon: FunctionalComponent;
-    name: string;
-    description: string;
-    price: string;
-    status: 'Coming Soon' | 'Limited — Waitlist';
-}
-
-const products: Product[] = [
-    {
-        icon: Shirt,
-        name: 'Xies Emblem Tee',
-        description:
-            'Premium heavyweight black tee with the gold Xies emblem across the chest.',
-        price: '$32',
-        status: 'Coming Soon',
-    },
-    {
-        icon: ShoppingBag,
-        name: 'Broadcast Hoodie',
-        description:
-            'Charcoal fleece hoodie with embroidered gold X and "Excellence in X Broadcasting" sleeve print.',
-        price: '$58',
-        status: 'Coming Soon',
-    },
-    {
-        icon: Coffee,
-        name: 'Golden Hour Mug',
-        description:
-            'Matte black ceramic mug with a metallic gold microphone wrap. For the pre-show ritual.',
-        price: '$18',
-        status: 'Coming Soon',
-    },
-    {
-        icon: Mic,
-        name: 'The Golden Mic Collectible',
-        description:
-            'Limited-edition replica of the Xies trophy — the gold microphone on its black pedestal.',
-        price: '$149',
-        status: 'Limited — Waitlist',
-    },
-    {
-        icon: BadgeCheck,
-        name: 'Creator Badge Pack (Digital)',
-        description:
-            'Official nominee badges, lower-thirds, and cover art to promote your entry on X.',
-        price: '$12',
-        status: 'Coming Soon',
-    },
-    {
-        icon: Download,
-        name: 'Nominee Media Kit (Digital)',
-        description:
-            'Press-style templates and show assets to rally your community behind your nomination.',
-        price: '$19',
-        status: 'Coming Soon',
-    },
+const printfulPoints = [
+    { icon: Package, text: 'Printed & shipped on demand' },
+    { icon: ShieldCheck, text: 'Premium quality, secure ordering' },
+    { icon: Globe, text: 'Global shipping worldwide' },
 ];
 </script>
 
 <template>
-    <Head title="Shop" />
+    <Head title="Merchandise" />
 
     <section class="relative overflow-hidden">
         <div
@@ -93,73 +33,65 @@ const products: Product[] = [
             <p
                 class="text-sm font-bold tracking-[0.25em] text-xies-gold uppercase"
             >
-                The Xies Shop
+                Official Xies Merchandise
             </p>
             <h1 class="mt-3 text-4xl font-black tracking-tight uppercase">
-                Wear the
+                Premium Quality.
                 <span
                     class="bg-gradient-to-r from-xies-goldlight to-xies-gold bg-clip-text text-transparent"
-                    >Gold Standard</span
+                    >Bold Statement.</span
                 >
             </h1>
             <p class="mx-auto mt-4 max-w-xl text-white/60">
-                The concept collection is in production — apparel and drinkware
-                through print-on-demand, and the collectible mic with a
-                specialty trophy maker. Everything drops before the
-                {{ dates.show }} show.
+                Represent the movement. Celebrate excellence. Tees, hoodies,
+                mugs, hats, and more — all in the black &amp; gold Xies
+                standard.
             </p>
         </div>
     </section>
 
-    <section class="mx-auto max-w-6xl px-6 pb-20">
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <div
-                v-for="product in products"
-                :key="product.name"
-                class="flex flex-col rounded-2xl border border-white/10 bg-xies-charcoal p-6 transition hover:border-xies-gold/40"
+    <section class="mx-auto max-w-4xl px-6 pb-20">
+        <img
+            src="/images/xies-merch-board.jpg"
+            alt="Official Xies merchandise collection — t-shirts, hoodies, mugs, tumblers, hats, beanies, bags, phone cases, water bottles, sweatshirts, and posters in black and gold"
+            class="mx-auto w-full max-w-2xl rounded-2xl border border-xies-gold/40 shadow-[0_0_60px_rgba(201,162,74,0.25)]"
+        />
+
+        <div
+            class="mx-auto mt-10 max-w-2xl rounded-2xl border-2 border-xies-gold bg-xies-charcoal p-8 text-center"
+        >
+            <p
+                class="text-lg font-black tracking-[0.15em] text-xies-goldlight uppercase"
             >
-                <div
-                    class="flex aspect-[4/3] items-center justify-center rounded-xl bg-[radial-gradient(ellipse_at_center,rgba(201,162,74,0.18),rgba(7,7,7,0.9))]"
-                >
-                    <component
-                        :is="product.icon"
-                        class="size-14 text-xies-gold"
-                    />
-                </div>
-                <div class="mt-5 flex items-start justify-between gap-3">
-                    <h2 class="text-lg leading-tight font-bold">
-                        {{ product.name }}
-                    </h2>
-                    <span
-                        class="text-lg font-black whitespace-nowrap text-xies-goldlight"
-                        >{{ product.price }}</span
-                    >
-                </div>
-                <p class="mt-2 flex-1 text-sm leading-relaxed text-white/55">
-                    {{ product.description }}
-                </p>
+                All orders are fulfilled by Printful.
+            </p>
+            <p class="mx-auto mt-2 max-w-md text-sm text-white/60">
+                Printful handles production, printing, fulfillment, and shipping
+                for every order.
+            </p>
+            <div
+                class="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-3"
+            >
                 <span
-                    class="mt-5 inline-flex w-fit items-center rounded-full border px-3 py-1 text-[11px] font-bold tracking-widest uppercase"
-                    :class="
-                        product.status === 'Limited — Waitlist'
-                            ? 'border-xies-gold text-xies-goldlight'
-                            : 'border-white/20 text-white/50'
-                    "
+                    v-for="point in printfulPoints"
+                    :key="point.text"
+                    class="flex items-center gap-2 text-xs font-bold tracking-widest text-white/60 uppercase"
                 >
-                    {{ product.status }}
+                    <component :is="point.icon" class="size-4 text-xies-gold" />
+                    {{ point.text }}
                 </span>
             </div>
         </div>
 
         <div
-            class="mt-12 rounded-2xl border border-xies-gold/40 bg-xies-charcoal p-8 text-center"
+            class="mx-auto mt-6 max-w-2xl rounded-2xl border border-white/10 bg-xies-charcoal p-8 text-center"
         >
             <h2 class="text-xl font-black tracking-wide uppercase">
-                Want first access when the shop opens?
+                Ready to order?
             </h2>
             <p class="mx-auto mt-2 max-w-lg text-sm text-white/60">
-                Call us and we'll add you to the launch list — nominees and
-                their communities get first pick of the limited pieces.
+                PayPal and Stripe checkout are being connected — until online
+                ordering goes live, call us to place your order.
             </p>
             <div
                 class="mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-2"
@@ -175,7 +107,7 @@ const products: Product[] = [
                 </a>
             </div>
             <p class="mt-6 text-sm text-white/50">
-                While you wait —
+                While you're here —
                 <Link
                     href="/nominate"
                     class="font-bold text-xies-goldlight underline underline-offset-4"

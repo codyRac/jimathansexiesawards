@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Head, useForm } from '@inertiajs/vue3';
 import {
+    ChevronDown,
     CreditCard,
     ExternalLink,
     Paperclip,
@@ -16,11 +17,14 @@ const props = defineProps<{
     phones: string[];
     website: string;
     dates: {
+        eligibility_start: string;
+        eligibility_end: string;
         nominations_open: string;
         nominations_close: string;
         show: string;
     };
     categories: string[];
+    categoryGroups: { label: string; categories: string[] }[];
     paypalUrl: string | null;
     stripeUrl: string | null;
 }>();
@@ -28,6 +32,7 @@ const props = defineProps<{
 const form = useForm({
     nominator_name: '',
     nominator_email: '',
+    nominator_phone: '',
     nominator_x_handle: '',
     self_nomination: false,
     nominee_name: '',
@@ -43,6 +48,9 @@ const form = useForm({
 });
 
 const total = computed(() => form.categories.length * props.fee);
+
+const selectedInGroup = (categories: string[]) =>
+    form.categories.filter((category) => categories.includes(category)).length;
 
 const attachmentErrors = computed(() => {
     const errors = form.errors as Record<string, string>;
@@ -113,11 +121,32 @@ const labelClass =
                     >Get Recognized</span
                 >
             </h1>
-            <p class="mx-auto mt-4 max-w-xl text-white/60">
-                ${{ fee }} per nomination, all categories. Eligibility period
-                {{ dates.nominations_open }} – {{ dates.nominations_close }}.
-                The show goes live on X {{ dates.show }}.
+            <p class="mx-auto mt-4 max-w-2xl text-white/60">
+                The Xies recognize outstanding podcasts, X Spaces, livestreams,
+                interviews, journalism, commentary, education, and online media
+                — while helping creators expand their audience and footprint.
             </p>
+            <p class="mx-auto mt-3 max-w-2xl text-white/60">
+                ${{ fee }} per nomination, all categories. No early-entry
+                discounts.
+            </p>
+            <div
+                class="mx-auto mt-6 max-w-2xl rounded-xl border border-xies-gold/30 bg-xies-charcoal px-5 py-4 text-left text-sm leading-relaxed text-white/70"
+            >
+                <p>
+                    <span class="font-bold text-xies-goldlight uppercase"
+                        >Important dates:</span
+                    >
+                    All shows and eligible content produced
+                    {{ dates.eligibility_start }} through
+                    {{ dates.eligibility_end }} may be nominated. Nominations
+                    and voting open {{ dates.nominations_open }} — immediately
+                    after the June 2 primaries, so outstanding primary-season
+                    shows are included — and both remain open through
+                    {{ dates.nominations_close }}. The awards are presented on
+                    New Year's Eve, live on X.
+                </p>
+            </div>
         </div>
     </section>
 
@@ -165,6 +194,22 @@ const labelClass =
                     <InputError
                         class="mt-1.5"
                         :message="form.errors.nominator_email"
+                    />
+                </div>
+                <div>
+                    <label for="nominator_phone" :class="labelClass"
+                        >Your Phone (Optional)</label
+                    >
+                    <input
+                        id="nominator_phone"
+                        v-model="form.nominator_phone"
+                        type="tel"
+                        :class="inputClass"
+                        autocomplete="tel"
+                    />
+                    <InputError
+                        class="mt-1.5"
+                        :message="form.errors.nominator_phone"
                     />
                 </div>
                 <div>
@@ -267,8 +312,15 @@ const labelClass =
             </legend>
             <p class="mb-4 text-sm text-white/50">
                 ${{ fee }} per category entry — select every category where the
-                nominee deserves recognition.
+                nominee deserves recognition. Any show's outstanding guests may
+                be nominated in whatever category is appropriate.
             </p>
+
+            <h3
+                class="mb-3 text-xs font-black tracking-[0.2em] text-white/60 uppercase"
+            >
+                Featured Categories
+            </h3>
             <div class="grid gap-2.5 sm:grid-cols-2">
                 <label
                     v-for="category in categories"
@@ -288,6 +340,63 @@ const labelClass =
                     />
                     {{ category }}
                 </label>
+            </div>
+
+            <h3
+                class="mt-8 text-xs font-black tracking-[0.2em] text-white/60 uppercase"
+            >
+                Additional Categories
+            </h3>
+            <p class="mt-1.5 mb-3 text-sm text-white/50">
+                Open a group to browse the complete list.
+            </p>
+            <div class="space-y-3">
+                <details
+                    v-for="group in categoryGroups"
+                    :key="group.label"
+                    class="group rounded-xl border border-white/10 bg-white/[0.03] open:border-xies-gold/40"
+                >
+                    <summary
+                        class="flex cursor-pointer items-center justify-between gap-3 px-4 py-3.5 select-none"
+                    >
+                        <span
+                            class="text-sm font-bold tracking-wide text-white/85 uppercase"
+                        >
+                            {{ group.label }}
+                        </span>
+                        <span class="flex items-center gap-3">
+                            <span
+                                v-if="selectedInGroup(group.categories)"
+                                class="rounded-full bg-xies-gold/15 px-2.5 py-0.5 text-xs font-bold text-xies-goldlight"
+                            >
+                                {{ selectedInGroup(group.categories) }} selected
+                            </span>
+                            <ChevronDown
+                                class="size-4 shrink-0 text-xies-gold transition-transform group-open:rotate-180"
+                            />
+                        </span>
+                    </summary>
+                    <div class="grid gap-2.5 px-4 pb-4 sm:grid-cols-2">
+                        <label
+                            v-for="category in group.categories"
+                            :key="category"
+                            class="flex cursor-pointer items-center gap-3 rounded-lg border px-3.5 py-2.5 text-sm font-medium transition"
+                            :class="
+                                form.categories.includes(category)
+                                    ? 'border-xies-gold bg-xies-gold/10 text-xies-goldlight'
+                                    : 'border-white/10 text-white/75 hover:border-white/25'
+                            "
+                        >
+                            <input
+                                v-model="form.categories"
+                                type="checkbox"
+                                :value="category"
+                                class="size-4 accent-xies-gold"
+                            />
+                            {{ category }}
+                        </label>
+                    </div>
+                </details>
             </div>
             <InputError class="mt-3" :message="form.errors.categories" />
         </fieldset>
@@ -528,9 +637,9 @@ const labelClass =
                     I confirm this entry is my own submission, that I have
                     permission to share the included content, and I agree to the
                     Xies nomination rules, eligibility period ({{
-                        dates.nominations_open
+                        dates.eligibility_start
                     }}
-                    – {{ dates.nominations_close }}), and judging process. *
+                    – {{ dates.eligibility_end }}), and judging process. *
                 </span>
             </label>
             <InputError :message="form.errors.terms" />

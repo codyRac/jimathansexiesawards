@@ -24,6 +24,7 @@ class NominationController extends Controller
         return Inertia::render('xies/Nominate', [
             ...Xies::siteProps(),
             'categories' => Xies::categories(),
+            'categoryGroups' => Xies::categoryGroups(),
             'paypalUrl' => Xies::paypalUrl(),
             'stripeUrl' => Xies::stripeUrl(),
         ]);

@@ -20,10 +20,18 @@ class XiesController extends Controller
     }
 
     /**
-     * Show the merchandise concept shop.
+     * Show the merchandise page.
      */
     public function shop(): Response
     {
         return Inertia::render('xies/Shop', Xies::siteProps());
+    }
+
+    /**
+     * Show the trophy collection page.
+     */
+    public function trophies(): Response
+    {
+        return Inertia::render('xies/Trophies', Xies::siteProps());
     }
 }

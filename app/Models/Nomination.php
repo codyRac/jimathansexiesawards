@@ -13,6 +13,7 @@ use Illuminate\Support\Carbon;
  * @property string|null $nomination_number
  * @property string $nominator_name
  * @property string $nominator_email
+ * @property string|null $nominator_phone
  * @property string|null $nominator_x_handle
  * @property bool $self_nomination
  * @property string $nominee_name
@@ -33,6 +34,7 @@ use Illuminate\Support\Carbon;
     'nomination_number',
     'nominator_name',
     'nominator_email',
+    'nominator_phone',
     'nominator_x_handle',
     'self_nomination',
     'nominee_name',

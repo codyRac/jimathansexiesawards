@@ -19,6 +19,7 @@ interface NominationRow {
     attachments_count: number;
     nominator_name: string;
     nominator_email: string;
+    nominator_phone: string | null;
     submitted_at: string | null;
 }
 
@@ -215,6 +216,12 @@ const toggleStatus = (nomination: NominationRow) => {
                                 <p>{{ nomination.nominator_name }}</p>
                                 <p class="text-xs text-muted-foreground">
                                     {{ nomination.nominator_email }}
+                                </p>
+                                <p
+                                    v-if="nomination.nominator_phone"
+                                    class="text-xs text-muted-foreground"
+                                >
+                                    {{ nomination.nominator_phone }}
                                 </p>
                             </td>
                             <td

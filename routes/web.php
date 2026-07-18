@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [XiesController::class, 'home'])->name('home');
 Route::get('shop', [XiesController::class, 'shop'])->name('shop');
+Route::get('trophies', [XiesController::class, 'trophies'])->name('trophies');
 
 Route::get('nominate', [NominationController::class, 'create'])->name('nominate');
 Route::post('nominate', [NominationController::class, 'store'])->name('nominate.store');

@@ -18,6 +18,38 @@ class Xies
     }
 
     /**
+     * The additional categories shown on the nomination page, grouped.
+     *
+     * @return list<array{label: string, categories: list<string>}>
+     */
+    public static function categoryGroups(): array
+    {
+        /** @var array<string, list<string>> $groups */
+        $groups = config('xies.category_groups');
+
+        return collect($groups)
+            ->map(fn (array $categories, string $label) => [
+                'label' => $label,
+                'categories' => $categories,
+            ])
+            ->values()
+            ->all();
+    }
+
+    /**
+     * Every category open for nomination — featured and grouped.
+     *
+     * @return list<string>
+     */
+    public static function allCategories(): array
+    {
+        /** @var array<string, list<string>> $groups */
+        $groups = config('xies.category_groups');
+
+        return array_values(array_unique(array_merge(self::categories(), ...array_values($groups))));
+    }
+
+    /**
      * The fee per nomination entry, in whole US dollars.
      */
     public static function fee(): int
@@ -63,11 +95,11 @@ class Xies
     }
 
     /**
-     * @return array{nominations_open: string, nominations_close: string, show: string}
+     * @return array{eligibility_start: string, eligibility_end: string, nominations_open: string, nominations_close: string, show: string}
      */
     public static function dates(): array
     {
-        /** @var array{nominations_open: string, nominations_close: string, show: string} $dates */
+        /** @var array{eligibility_start: string, eligibility_end: string, nominations_open: string, nominations_close: string, show: string} $dates */
         $dates = config('xies.dates');
 
         return $dates;
