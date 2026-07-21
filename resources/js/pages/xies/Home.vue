@@ -177,7 +177,7 @@ onMounted(() => {
                         class="animate-slide-in-up text-center text-lg font-black tracking-[0.35em] text-xies-gold uppercase"
                         style="animation-delay: 0.2s"
                     >
-                        Jim Athans Xies Awards
+                        Xies Awards
                     </h1>
 
                     <div
