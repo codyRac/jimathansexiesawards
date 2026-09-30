@@ -3,6 +3,8 @@ import { Head, Link } from '@inertiajs/vue3';
 import {
     CalendarCheck,
     CircleCheck,
+    CreditCard,
+    Layers,
     Phone,
     Podcast,
     Radio,
@@ -25,6 +27,9 @@ defineProps<{
         show: string;
     };
     categories: string[];
+    categoryCount: number;
+    voteFee: number;
+    votePaypalUrl: string | null;
 }>();
 
 const platformPillars = [
@@ -458,6 +463,116 @@ onMounted(() => {
                         Multiple categories allowed!
                     </li>
                 </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to vote -->
+    <section class="mx-auto max-w-3xl px-6 pb-20" data-scroll-animate>
+        <div
+            class="animate-slide-in-up rounded-3xl border-2 border-xies-gold bg-black p-6 shadow-[0_0_40px_rgba(201,162,74,0.35)] sm:p-10"
+        >
+            <div class="flex items-center gap-5">
+                <span
+                    class="animate-glow flex size-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-b from-xies-goldlight to-xies-gold text-2xl font-black text-xies-black sm:size-16"
+                >
+                    {{ steps.length + 1 }}
+                </span>
+                <div>
+                    <h2
+                        class="text-3xl font-black tracking-tight uppercase sm:text-4xl"
+                    >
+                        How to Vote
+                    </h2>
+                    <p
+                        class="mt-1 text-sm font-bold tracking-[0.15em] text-xies-goldlight uppercase"
+                    >
+                        Support your favorite nominee(s)
+                    </p>
+                </div>
+            </div>
+
+            <ul class="mt-8 space-y-7">
+                <li class="flex items-start gap-5">
+                    <Users class="mt-0.5 size-9 shrink-0 text-xies-gold" />
+                    <div>
+                        <h3 class="font-bold tracking-wide uppercase">
+                            Vote for your favorite nominee(s)
+                        </h3>
+                        <p class="mt-1 text-sm leading-relaxed text-white/70">
+                            Vote for your favorite nominees for ${{ voteFee }}.
+                        </p>
+                    </div>
+                </li>
+                <li class="flex items-start gap-5">
+                    <Layers class="mt-0.5 size-9 shrink-0 text-xies-gold" />
+                    <div>
+                        <h3 class="font-bold tracking-wide uppercase">
+                            Vote in any or all {{ categoryCount }} categories
+                        </h3>
+                        <p class="mt-1 text-sm leading-relaxed text-white/70">
+                            You can vote one time in one category or all
+                            {{ categoryCount }} — ${{ voteFee }}.
+                        </p>
+                    </div>
+                </li>
+                <li class="flex items-start gap-5">
+                    <CreditCard class="mt-0.5 size-9 shrink-0 text-xies-gold" />
+                    <div>
+                        <h3 class="font-bold tracking-wide uppercase">
+                            How to pay
+                        </h3>
+                        <p class="mt-1 text-sm leading-relaxed text-white/70">
+                            Click the PayPal button below to cast your vote(s).
+                            Be sure to include the nominee&rsquo;s name and
+                            category in your PayPal note.
+                        </p>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="mt-10 flex justify-center">
+                <a
+                    v-if="votePaypalUrl"
+                    :href="votePaypalUrl"
+                    target="_blank"
+                    rel="noopener"
+                    class="flex w-full max-w-md flex-col items-center rounded-full bg-gradient-to-b from-xies-goldlight to-xies-gold px-8 py-4 text-center shadow-[0_0_30px_rgba(240,207,114,0.35)] transition hover:brightness-110"
+                >
+                    <span
+                        class="text-sm font-black tracking-[0.15em] text-xies-black uppercase"
+                    >
+                        Vote now with
+                    </span>
+                    <span
+                        class="text-3xl font-black text-[#003087] italic sm:text-4xl"
+                    >
+                        Pay<span class="text-[#0070e0]">Pal</span>
+                    </span>
+                </a>
+                <span
+                    v-else
+                    class="flex w-full max-w-md cursor-not-allowed flex-col items-center rounded-full border border-xies-gold/40 bg-white/5 px-8 py-4 text-center"
+                >
+                    <span
+                        class="text-sm font-black tracking-[0.15em] text-white/60 uppercase"
+                    >
+                        PayPal voting
+                    </span>
+                    <span
+                        class="text-xs tracking-widest text-white/40 uppercase"
+                    >
+                        Coming soon
+                    </span>
+                </span>
+            </div>
+
+            <div class="mt-8 border-t border-xies-gold/30 pt-5 text-center">
+                <p
+                    class="text-sm font-bold tracking-[0.15em] text-xies-goldlight uppercase"
+                >
+                    Your vote makes a difference!
+                </p>
             </div>
         </div>
     </section>

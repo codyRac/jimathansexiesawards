@@ -57,6 +57,21 @@ class Xies
         return (int) config('xies.fee');
     }
 
+    /**
+     * The fee per vote, in whole US dollars.
+     */
+    public static function voteFee(): int
+    {
+        return (int) config('xies.vote_fee');
+    }
+
+    public static function votePaypalUrl(): ?string
+    {
+        $url = config('xies.vote_paypal_url');
+
+        return is_string($url) && $url !== '' ? $url : null;
+    }
+
     public static function paypalUrl(): ?string
     {
         $url = config('xies.paypal_url');

@@ -16,6 +16,9 @@ class XiesController extends Controller
         return Inertia::render('xies/Home', [
             ...Xies::siteProps(),
             'categories' => Xies::categories(),
+            'categoryCount' => count(Xies::allCategories()),
+            'voteFee' => Xies::voteFee(),
+            'votePaypalUrl' => Xies::votePaypalUrl(),
         ]);
     }
 

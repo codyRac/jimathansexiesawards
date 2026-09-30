@@ -17,6 +17,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Vote Fee
+    |--------------------------------------------------------------------------
+    |
+    | The fee, in whole US dollars, for casting a vote. Voters pay once via
+    | PayPal and name the nominee and category in their PayPal note.
+    |
+    */
+
+    'vote_fee' => 2,
+
+    /*
+    |--------------------------------------------------------------------------
     | Payment Links
     |--------------------------------------------------------------------------
     |
@@ -29,6 +41,7 @@ return [
 
     'paypal_url' => env('XIES_PAYPAL_URL'),
     'stripe_url' => env('XIES_STRIPE_URL'),
+    'vote_paypal_url' => env('XIES_VOTE_PAYPAL_URL'),
 
     /*
     |--------------------------------------------------------------------------
