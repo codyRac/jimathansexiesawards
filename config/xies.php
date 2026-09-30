@@ -41,7 +41,10 @@ return [
 
     'paypal_url' => env('XIES_PAYPAL_URL'),
     'stripe_url' => env('XIES_STRIPE_URL'),
-    'vote_paypal_url' => env('XIES_VOTE_PAYPAL_URL'),
+
+    // Placeholder: the $10 nomination link until the $2 vote link is ready.
+    // Set XIES_VOTE_PAYPAL_URL to override without a code change.
+    'vote_paypal_url' => env('XIES_VOTE_PAYPAL_URL') ?: 'https://www.paypal.com/ncp/payment/LMQBZFFMXBGMW',
 
     /*
     |--------------------------------------------------------------------------
